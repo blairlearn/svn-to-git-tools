@@ -48,8 +48,10 @@ md %CLONE_DIR%
 
 rem Create the staging Git repo.
 cd %STAGE_DIR%
-git svn init %SVN_REPO_URL% -T %SVN_PROJECT_PATH%/%TRUNK% --prefix=svn/ --no-metadata
+git svn init "%SVN_REPO_URL%" -T "%SVN_PROJECT_PATH%/%TRUNK%" --prefix=svn/ --no-metadata
+if errorlevel 1 goto error
 git svn fetch  --authors-file=%AUTHORS_FILE%
+if errorlevel 1 goto error
 rem TODO: Convert branches and tags
 
 
@@ -78,3 +80,11 @@ echo If all appears well with the clone repository, then you may consider
 echo '%STAGE_DIR%' to be ready for use.
 echo .
 echo .
+
+
+goto end
+:error
+echo .
+echo Errors have occured.  Exiting.
+echo .
+:end

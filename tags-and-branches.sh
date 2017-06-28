@@ -1,7 +1,7 @@
 #!/bin/sh
 
 echo 'Creating Branches.'
-for branch in `git branch -r | grep -v trunk | grep -v "origin/tags/" | sed 's/  origin\///'`; do
+for branch in `git branch -r | grep -v trunk | grep -v "@" | grep -v "origin/tags/" | sed 's/  origin\///'`; do
     git branch $branch refs/remotes/origin/$branch ;
 done
 

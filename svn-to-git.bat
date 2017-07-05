@@ -48,7 +48,7 @@ md %CLONE_DIR%
 
 rem Create the staging Git repo.
 cd %STAGE_DIR%
-git svn init "%SVN_REPO_URL%" -T "%SVN_PROJECT_PATH%/%TRUNK%" --prefix=svn/ --no-metadata
+git svn init "%SVN_REPO_URL%" -T "%SVN_PROJECT_PATH%/%TRUNK%" --no-metadata
 if errorlevel 1 goto error
 git svn fetch  --authors-file=%AUTHORS_FILE%
 if errorlevel 1 goto error
